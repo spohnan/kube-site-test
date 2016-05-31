@@ -12,13 +12,17 @@ spec:
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: website
+  name: website-v201605302044
 spec:
   replicas: 2
+  selector:
+    app: website
+    ver: v201605302044
   template:
     metadata:
       labels:
         app: website
+        ver: v201605302044
     spec:
       containers:
       - name: nginx
@@ -32,4 +36,4 @@ spec:
       - name: gitdata
         gitRepo:
           repository: https://github.com/spohnan/kube-site-test.git
-          revision: 59c1620f313f364bd268d506299756307dc9ecf6
+          revision: 249c312118e27104fb6423485ebf8e22f68a4a2b
